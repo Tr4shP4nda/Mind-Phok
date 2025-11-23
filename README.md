@@ -6,6 +6,21 @@ This repository contains example scripts and documentation for integrating Loven
 
 This project demonstrates how to control Lovense devices from within Second Life, enabling interactive experiences that bridge virtual and physical sensations. The main script provides a menu-driven interface for controlling device vibration patterns, intensity, and more.
 
+### Two Approaches Available
+
+1. **Standalone LSL Script** (`lovense_standalone.lsl`) - **RECOMMENDED FOR MOST USERS**
+   - No middleware server needed
+   - Works directly with Lovense API
+   - Three connection methods: LAN (local), Cloud (remote), or QR Code
+   - Perfect for personal use
+   - See [STANDALONE_VS_MIDDLEWARE.md](STANDALONE_VS_MIDDLEWARE.md) for comparison
+
+2. **Middleware Server Approach** (`lovense_controller.lsl` + `middleware-server.js`)
+   - Better for multi-user scenarios
+   - Production-ready security
+   - Advanced features (logging, rate limiting)
+   - Requires server setup
+
 ## ✨ Features
 
 - **Touch-based menu interface** for easy control
@@ -16,6 +31,34 @@ This project demonstrates how to control Lovense devices from within Second Life
 - **Customizable and extensible**
 
 ## 🚀 Quick Start
+
+### Choose Your Approach
+
+#### Option A: Standalone (Easiest - No Server Required!) ⭐ RECOMMENDED
+
+Perfect for personal use, simplest setup:
+
+1. **Get your local network info:**
+   - Open Lovense Connect app
+   - Go to Settings → Developer
+   - Note the Local IP and HTTPS Port
+
+2. **Configure the script:**
+   - Open `lovense_standalone.lsl`
+   - Set `CONNECTION_METHOD = 1`
+   - Set `LAN_IP` to your Local IP
+   - Set `LAN_PORT` to your HTTPS Port
+
+3. **Deploy to Second Life:**
+   - Create an object
+   - Add the script
+   - Touch and test!
+
+See [QUICKSTART.md](QUICKSTART.md) for detailed instructions.
+
+#### Option B: Middleware Server (For Production/Multi-User)
+
+Better for public objects or advanced features:
 
 ### Prerequisites
 
@@ -28,7 +71,7 @@ This project demonstrates how to control Lovense devices from within Second Life
    - Basic knowledge of LSL scripting
    - Permission to create/modify objects in-world
 
-3. **Middleware Server** (recommended)
+3. **Middleware Server**
    - A server with HTTPS and valid SSL certificate
    - See [Middleware Setup](#middleware-setup) below
 
@@ -144,8 +187,11 @@ string buildJsonRequest(string command, string action, integer duration) {
 
 ## 📚 Documentation
 
+- **[STANDALONE_VS_MIDDLEWARE.md](STANDALONE_VS_MIDDLEWARE.md)** - **START HERE** - Comparison guide to choose the right approach
+- **[QUICKSTART.md](QUICKSTART.md)** - Step-by-step setup guide
 - **[API_REFERENCE.md](API_REFERENCE.md)** - Detailed Lovense API documentation
-- **[lovense_controller.lsl](lovense_controller.lsl)** - Main controller script with inline documentation
+- **[lovense_standalone.lsl](lovense_standalone.lsl)** - Standalone script (no server needed)
+- **[lovense_controller.lsl](lovense_controller.lsl)** - Middleware version with inline documentation
 
 ## 🎮 Usage Examples
 
